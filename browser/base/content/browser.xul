@@ -25,6 +25,9 @@
 <?xul-overlay href="chrome://browser/content/padlock.xul"?>
 # Improve bookmark menu dragging
 <?xul-overlay href="chrome://browser/content/browser-menudragging.xul"?>
+# Promises injector
+<?xul-overlay href="chrome://browser/content/promises.xul"?>
+
  
 # All DTD information is stored in a separate file so that it can be shared by
 # hiddenWindow.xul.
@@ -528,10 +531,10 @@
                      persist="class"
                      removable="true"
                      type="menu"
-                     onclick="if (event.button == 1)
-                                toggleSidebar('viewBookmarksSidebar');"
                      label="&bookmarksMenuButton.label;"
                      tooltiptext="&bookmarksMenuButton.tooltip;"
+                     onclick="if (event.button == 1)
+                                toggleSidebar('viewBookmarksSidebar');"
                      ondragenter="PlacesMenuDNDHandler.onDragEnter(event);"
                      ondragover="PlacesMenuDNDHandler.onDragOver(event);"
                      ondragleave="PlacesMenuDNDHandler.onDragLeave(event);"
@@ -617,9 +620,9 @@
                      removable="true"                     
                      type="menu"
                      label="&historyButton.label;"
+                     tooltiptext="&historyButton.tooltip;"
                      onclick="if (event.button == 1)
-                                toggleSidebar('viewHistorySidebar');"
-                     tooltiptext="&historyButton.tooltip;">
+                                toggleSidebar('viewHistorySidebar');">
         <menupopup id="HMB_historyPopup"
                    placespopup="true"
                    context="placesContext"
