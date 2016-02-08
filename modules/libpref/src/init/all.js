@@ -414,10 +414,6 @@ pref("toolkit.scrollbox.verticalScrollDistance", 3);
 pref("toolkit.scrollbox.horizontalScrollDistance", 5);
 pref("toolkit.scrollbox.clickToScroll.scrollDelay", 150);
 
-// Identity module
-pref("toolkit.identity.enabled", false);
-pref("toolkit.identity.debug", false);
-
 // Enable deprecation warnings.
 pref("devtools.errorconsole.deprecation_warnings", true);
 
@@ -713,6 +709,7 @@ pref("capability.policy.default.Clipboard.cutcopy", "noAccess");
 pref("capability.policy.default.Clipboard.paste", "noAccess");
 
 // Scripts & Windows prefs
+pref("dom.disable_beforeunload",            false);
 pref("dom.disable_image_src_set",           false);
 pref("dom.disable_window_flip",             false);
 pref("dom.disable_window_move_resize",      false);
@@ -1311,6 +1308,9 @@ pref("network.prefetch-next", false);
 //   [scheme "://"] [host [":" port]]
 // For example, "foo.com" would match "http://www.foo.com/bar", etc.
 
+// Force less-secure NTLMv1 when needed (NTLMv2 is the default).
+pref("network.auth.force-generic-ntlm-v1", false);
+
 // This list controls which URIs can use the negotiate-auth protocol.  This
 // list should be limited to the servers you know you'll need to login to.
 pref("network.negotiate-auth.trusted-uris", "");
@@ -1344,9 +1344,6 @@ pref("network.auth.use-sspi", true);
 // unless you know what you're doing!
 pref("network.auth.force-generic-ntlm", false);
 
-// Allow insecure NTLMv1 when needed.
-pref("network.negotiate-auth.allow-insecure-ntlm-v1", false);
-
 // The following prefs are used to enable automatic use of the operating
 // system's NTLM implementation to silently authenticate the user with their
 // Window's domain logon.  The trusted-uris pref follows the format of the
@@ -1364,14 +1361,6 @@ pref("network.automatic-ntlm-auth.trusted-uris", "");
 // that is listed in allowedWorkstations for the user's account in their
 // AD Domain.
 pref("network.generic-ntlm-auth.workstation", "WORKSTATION");
-
-// This preference controls whether or not the LM hash will be included in
-// response to a NTLM challenge.  By default, this is disabled since servers
-// should almost never need the LM hash, and the LM hash is what makes NTLM
-// authentication less secure.  See bug 250691 for further details.
-// NOTE: automatic-ntlm-auth which leverages the OS-provided NTLM
-//       implementation will not be affected by this preference.
-pref("network.ntlm.send-lm-response", false);
 
 pref("permissions.default.image",           1); // 1-Accept, 2-Deny, 3-dontAcceptForeign
 
@@ -1530,6 +1519,7 @@ pref("security.xssfilter.blockMode", false);
 pref("security.xssfilter.ignoreHeaders", false);
 pref("security.xssfilter.displayWarning", true);
 pref("security.xssfilter.blockDynamic", true);
+pref("security.xssfilter.srcwhitelist", "");
 pref("security.xssfilter.whitelist", "");
 
 // Mixed content blocking
@@ -2142,7 +2132,8 @@ pref("ui.mouse.radius.inputSource.touchOnly", true);
 #ifdef XP_WIN
 
 pref("font.name.serif.ar", "Times New Roman");
-pref("font.name.sans-serif.ar", "Arial");
+pref("font.name.sans-serif.ar", "Segoe UI");
+pref("font.name-list.sans-serif.ar", "Segoe UI, Tahoma, Arial");
 pref("font.name.monospace.ar", "Courier New");
 pref("font.name.cursive.ar", "Comic Sans MS");
 

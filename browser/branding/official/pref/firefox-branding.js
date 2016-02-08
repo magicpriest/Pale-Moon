@@ -69,13 +69,19 @@ pref("general.useragent.override.aol.com","Mozilla/5.0 (Windows NT 6.1; WOW64; r
 pref("general.useragent.override.google.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.9) Gecko/20100101 Goanna/2.0 Firefox/31.9 PaleMoon/26.0");
 pref("general.useragent.override.googlevideos.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.9) Gecko/20100101 Goanna/2.0 Firefox/31.9 PaleMoon/26.0");
 pref("general.useragent.override.gstatic.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.9) Gecko/20100101 Goanna/2.0 Firefox/31.9 PaleMoon/26.0");
-pref("general.useragent.override.youtube.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.9) Gecko/20100101 Goanna/2.0 Firefox/31.9 PaleMoon/26.0");
+pref("general.useragent.override.youtube.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Goanna/2.0 Firefox/38.9 PaleMoon/26.0");
+pref("general.useragent.override.gaming.youtube.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Firefox/38.9");
+pref("general.useragent.override.netflix.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:26.0) Gecko/20100101 Firefox/31.9");
 
 // UA-Sniffing domains below are pending responses from their operators - temp workaround
-pref("general.useragent.override.netflix.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.7) Gecko/20100101 Firefox/31.9 PaleMoon/25.7");
 pref("general.useragent.override.facebook.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Goanna/2.0 Firefox/38.9 PaleMoon/26.0");
 pref("general.useragent.override.fbcdn.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Goanna/2.0 Firefox/38.9 PaleMoon/26.0");
 pref("general.useragent.override.fbcdn.net","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Goanna/2.0 Firefox/38.9 PaleMoon/26.0");
+pref("general.useragent.override.chase.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.9) Gecko/20100101 Firefox/31.9");
+// Citi requires native mode. Or it blocks.. "too old firefox"
+pref("general.useragent.override.citi.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:2.0) Goanna/20160101 PaleMoon/26.0");
+// Yuku fora don't like the Goanna slice (result: broken mobile site)
+pref("general.useragent.override.yuku.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.9) Gecko/20100101 Firefox/38.9 PaleMoon/26.0");
 
 // UA-Sniffing domains below have indicated no interest in supporting Pale Moon (BOO!)
 pref("general.useragent.override.humblebundle.com","Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0 (Pale Moon)");
@@ -104,7 +110,6 @@ pref("gfx.color_management.enablev4", true); //Use "new" handler to prevent disp
 // ****************** UI config ******************
 
 pref("browser.tabs.insertRelatedAfterCurrent", false); //use old method of tabbed browsing instead of "Chrome" style
-pref("general.warnOnAboutConfig", false); //about:config warning. annoying. I don't give warranty.
 pref("browser.download.useDownloadDir", false); //don't use default download location as standard. ASK.
 pref("browser.search.context.loadInBackground", true); //don't swap focus to the context search tab.
 pref("browser.ctrlTab.previews", true);
@@ -116,6 +121,15 @@ pref("browser.urlbar.autoFill.typed", true);
 
 //Set tabs NOT on top
 pref("browser.tabs.onTop",false); 
+
+// ****************** Security ******************
+
+// Known embedding domains that do NOT do things properly and should provide
+// a filter-disabling header, but don't.
+pref("security.xssfilter.srcwhitelist", "googleusercontent.com,embed.ly,msads.net");
+
+// Known embedded target domains that do things properly (no XSS vulnerability)
+pref("security.xssfilter.whitelist", "paypalobjects.com,yimg.com");
 
 // ****************** Misc. config ******************
 
